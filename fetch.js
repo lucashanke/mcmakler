@@ -1,11 +1,9 @@
-import { fetchNEOFeedFromLast3Days } from './nasa_service.js';
-import { NEO } from './models.js';
-import { persistNEO } from './repository.js';
+import fetch from  './commands.js';
 
-fetchNEOFeedFromLast3Days().then((response) => {
-  const neos = response.data.near_earth_objects;
-  Object.keys(neos).forEach(date => {
-    neos[date].map(neoData => persistNEO(NEO.build(date, neoData)));
-  });
-  console.log(`Near Earth Objects fetched: ${response.data.element_count}`);
-}).catch(err =>  console.log(err.message));
+fetch().then((count) => {
+  console.log(`Near Earth Objects fetched: ${count}`);
+  process.exit();
+}).catch((err) => {
+  console.log(err);
+  process.exit(1);
+});
