@@ -6,6 +6,8 @@
 
 Install Docker (https://www.docker.com/) and docker-compose (https://docs.docker.com/compose/).
 
+Before running any commands, it is necessary to set an environment variable with NASA's API key. Just edit the .env file and set the `NASA_API_KEY` value.
+
 * Build the app with `docker-compose build`
 * To execute the command to fetch NEOs from NASA's API: `docker-compose run fetch`
 * To run the application's API: `docker-compose up app`
