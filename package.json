@@ -1,6 +1,10 @@
 {
   "name": "mcmakler",
   "version": "1.0.0",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {

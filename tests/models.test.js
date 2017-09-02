@@ -4,9 +4,6 @@ import { NEO } from '../models.js';
 describe('NEO', () => {
 
   describe('#build', () => {
-    /**
-     * @jest-environment node
-     */
     test('returns a NEO record with the data and date informed', () => {
       const neoData = {
         neo_reference_id: '1',
@@ -26,9 +23,6 @@ describe('NEO', () => {
       expect(neo.get('isHazardous')).toEqual(true);
     });
 
-    /**
-     * @jest-environment node
-     */
     test('uses the first set of close_approach_data to set speed' , () => {
       const neoData = {
         neo_reference_id: '1',
