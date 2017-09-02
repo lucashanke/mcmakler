@@ -1,10 +1,11 @@
+import moment from 'moment';
 import { NEO } from '../models.js';
 
 describe('NEO', () => {
 
   describe('#build', () => {
     /**
-     * @jest-environment jest-environment-node
+     * @jest-environment node
      */
     test('returns a NEO record with the data and date informed', () => {
       const neoData = {
@@ -18,7 +19,7 @@ describe('NEO', () => {
         is_potentially_hazardous_asteroid: true,
       };
       const neo = NEO.build('2017-08-31', neoData);
-      expect(neo.get('date')).toEqual('2017-08-31');
+      expect(neo.get('date')).toEqual(moment('2017-08-31').toDate());
       expect(neo.get('reference')).toEqual('1');
       expect(neo.get('name')).toEqual('neo-1');
       expect(neo.get('speed')).toEqual(130.0);
@@ -26,7 +27,7 @@ describe('NEO', () => {
     });
 
     /**
-     * @jest-environment jest-environment-node
+     * @jest-environment node
      */
     test('uses the first set of close_approach_data to set speed' , () => {
       const neoData = {
