@@ -16,3 +16,17 @@ export const fetchHazardous = (callback) =>
 
 export const fetchFastest = (callback, isHazardous = false) =>
   NEO.find({ isHazardous }).sort({ speed: -1 }).limit(1).exec(callback);
+
+export const fetchBestYear = (callback, isHazardous = false) =>
+  NEO.aggregate(
+    { $match: { isHazardous } },
+    { $project: { year: { $year: "$date" } } },
+    { $group: { _id: "$year", count: { $sum: 1 } } },
+  ).sort({ count: -1 }).limit(1).exec(callback);
+
+export const fetchBestMonth = (callback, isHazardous = false) =>
+  NEO.aggregate(
+    { $match: { isHazardous } },
+    { $project: { month: { $month: "$date" } } },
+    { $group: { _id: "$month", count: { $sum: 1 } } },
+  ).sort({ count: -1 }).limit(1).exec(callback);
