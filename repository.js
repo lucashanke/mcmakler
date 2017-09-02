@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import { NEO } from './models.js';
 
-const MONGO_DB_URL = 'mongodb://localhost:27017/nasa';
+const MONGO_DB_URL = `mongodb://${process.env.MONGO_DB_HOST || 'localhost'}:27017/nasa`;
 mongoose.Promise = global.Promise;
 
 mongoose.connect(MONGO_DB_URL, { useMongoClient: true });
