@@ -9,8 +9,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(MONGO_DB_URL, { useMongoClient: true });
 
-export const persistNEOs = (neos, callback) =>
-  NEO.insertMany(neos, callback).catch(err =>  console.log(err.message));
+export const persistNEOs = (neos, callback) => NEO.insertMany(neos, callback);
 
 export const fetchHazardous = (callback) =>
   NEO.find({ isHazardous: true }, callback);
