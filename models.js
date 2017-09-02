@@ -1,14 +1,17 @@
 import { Record } from 'immutable';
+import mongoose from 'mongoose';
 
-export const NEO = Record({
-  date: '',
-  reference: '',
-  name: '',
-  speed: 0,
-  isHazardous: false,
+export const NEO = mongoose.model('neos', {
+  _id: Number,
+  date: String,
+  reference: String,
+  name: String,
+  speed: Number,
+  isHazardous: Boolean,
 });
 
 NEO.build = (date, neoData) => NEO({
+  _id: neoData.neo_reference_id,
   date,
   reference: neoData.neo_reference_id,
   name: neoData.name,
