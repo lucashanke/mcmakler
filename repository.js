@@ -9,8 +9,10 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(MONGO_DB_URL, { useMongoClient: true });
 
-export const persistNEO = (neo) => {
-  neo.save().catch(err =>  console.log(err.message));
-};
+export const persistNEO = (neo) => neo.save().catch(err =>  console.log(err.message));
 
-export const fetchHazardous = (callback) => NEO.find({ isHazardous: true }, callback);
+export const fetchHazardous = (callback) =>
+  NEO.find({ isHazardous: true }, callback);
+
+export const fetchFastest = (callback, isHazardous = false) =>
+  NEO.find({ isHazardous }).sort({ speed: -1 }).limit(1).exec(callback);
