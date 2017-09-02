@@ -14,17 +14,20 @@ export const persistNEOs = (neos, callback) => NEO.insertMany(neos, callback);
 export const fetchHazardous = (callback) =>
   NEO.find({ isHazardous: true }, callback);
 
-export const fetchFastest = (callback, isHazardous = false) =>
+export const fetchFastest = (callback, isHazardous) =>
   NEO.find({ isHazardous }).sort({ speed: -1 }).limit(1).exec(callback);
 
-export const fetchBestYear = (callback, isHazardous = false) =>
+export const fetchBestYear = (callback, isHazardous) =>
+{
+  console.log(isHazardous);
   NEO.aggregate(
     { $match: { isHazardous } },
     { $project: { year: { $year: "$date" } } },
     { $group: { _id: "$year", count: { $sum: 1 } } },
   ).sort({ count: -1 }).limit(1).exec(callback);
+}
 
-export const fetchBestMonth = (callback, isHazardous = false) =>
+export const fetchBestMonth = (callback, isHazardous) =>
   NEO.aggregate(
     { $match: { isHazardous } },
     { $project: { month: { $month: "$date" } } },
