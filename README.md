@@ -2,6 +2,16 @@
 
 ###### Author: Lucas Hanke
 
+### Running through Docker
+
+Install Docker (https://www.docker.com/) and docker-compose (https://docs.docker.com/compose/).
+
+* Build the app with `docker-compose build`
+* To execute the command to fetch NEOs from NASA's API: `docker-compose run fetch`
+* To run the application's API: `docker-compose up app`
+* To run the application's tests: `docker-compose run tests`
+
+
 ### Running locally
 
 #### Install Dependencies
