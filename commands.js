@@ -7,7 +7,7 @@ const fetch = () => new Promise((resolve, reject) => {
     let neos = [];
     const neosData = response.data.near_earth_objects;
     Object.keys(neosData).forEach(date => {
-      neos.push(neosData[date].map(neoData => NEO.build(date, neoData)));
+      neos = neos.concat(neosData[date].map(neoData => NEO.build(date, neoData)));
     });
     persistNEOs(neos, (err, neos) => resolve(response.data.element_count));
   }).catch(err => reject(err.message));
