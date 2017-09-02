@@ -8,4 +8,4 @@ fetchNEOFeedFromLast3Days().then((response) => {
     neos[date].map(neoData => persistNEO(NEO.build(date, neoData)));
   });
   console.log(`Near Earth Objects fetched: ${response.data.element_count}`);
-});
+}).catch(err =>  console.log(err.message));
