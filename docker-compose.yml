@@ -34,3 +34,9 @@ services:
     links:
       - mongodb
     command: ["npm", "run", "fetch"]
+
+  tests:
+    image: neo:app
+    env_file:
+      - .env
+    command: ["npm", "run", "test"]
