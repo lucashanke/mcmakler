@@ -10,7 +10,7 @@ Before running any commands, it is necessary to set an environment variable with
 
 * Build the app with `docker-compose build`
 * To execute the command to fetch NEOs from NASA's API: `docker-compose run fetch`
-* To run the application's API: `docker-compose up app`
+* To run the application's API: `docker-compose up app` - The APIs should be accessible through port 3001: http://localhost:3001/
 * To run the application's tests: `docker-compose run tests`
 
 
@@ -29,8 +29,6 @@ Before running any commands, it is necessary to set an environment variable with
 * To execute the command to fetch NEOs from NASA's API: `npm run fetch`
 
 * To run the application's API: `npm start`
-
-The APIs should be accessible through port 3001: http://localhost:3001
 
 #### Testing
 
